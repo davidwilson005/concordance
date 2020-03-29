@@ -1,0 +1,44 @@
+#!/usr/bin/env php
+<?php
+
+$text = "Given an arbitrary text document written in English, write a program that will generate a concordance, i.e. an alphabetical list of all word occurrences, labeled with word frequencies. Bonus: label each word with the sentence numbers in which each occurrence appeared.";
+
+// break into sentences
+$sentences = preg_split('/(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s/m', $text);
+
+// loop through sentences, keep track of the line number and concordance
+$lineNumber = 1;
+$concordance = [];
+foreach ($sentences as $sentence) {
+
+    // split words
+    $words = preg_split('/[^\w]*([\s]+[^\w]*|$)/', $sentence, -1, PREG_SPLIT_NO_EMPTY);
+
+    // loop through words
+    foreach ($words as $word) {
+
+        // words are case insensitive
+        $word = strtolower($word);
+
+        // if the word exists, add to the count and line number
+        if (isset($concordance[$word])) {
+            $concordance[$word]['count']++;
+            $concordance[$word]['lines'][] = $lineNumber;
+
+            continue;
+        }
+
+        // add a new word with the count and line number
+        $concordance[$word] = [
+            'count' => 1,
+            'lines' => [$lineNumber]
+        ];
+    }
+
+    $lineNumber++;
+}
+
+// alphabetize the list
+ksort($concordance);
+
+print_r($concordance);
