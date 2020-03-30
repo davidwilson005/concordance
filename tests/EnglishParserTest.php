@@ -41,5 +41,47 @@ class EnglishParserTest extends TestCase
         $this->assertEquals($expectedResults, $englishParser->splitSentences($sentences));
     }
 
+    /**
+     * Test the testSplitWords() method will split words, confirm words that have a dot at the end like Mr..
+     *
+     * @return void
+     */
+    public function testSplitWords(): void
+    {
+        $words = 'This is words, with punctuation i.e. Mr. Smith and high-tech, high-rise and life-size. Break words ' .
+            'with "quotes". Does this work?  No punctuation in a sentence ending!';
 
+        $expectedResults = [
+            'this',
+            'is',
+            'words',
+            'with',
+            'punctuation',
+            'i.e',
+            'mr',
+            'smith',
+            'and',
+            'high-tech',
+            'high-rise',
+            'and',
+            'life-size',
+            'break',
+            'words',
+            'with',
+            'quotes',
+            'does',
+            'this',
+            'work',
+            'no',
+            'punctuation',
+            'in',
+            'a',
+            'sentence',
+            'ending'
+        ];
+
+        // test getWords()
+        $englishParser = new EnglishParser();
+        $this->assertEquals($expectedResults, $englishParser->getWords($words));
+    }
 }
