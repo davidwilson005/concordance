@@ -18,10 +18,6 @@ class Factory
      */
     public static function createEnglishFileScreenInstance(string $filepath): ServiceInterface
     {
-        return new Service(
-            new EnglishParser(),
-            new FileReader($filepath),
-            new ScreenWriter()
-        );
+        return new Service(new EnglishParser(), new FileReader($filepath), new ScreenWriter());
     }
 }

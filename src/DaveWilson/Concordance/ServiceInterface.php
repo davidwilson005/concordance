@@ -5,7 +5,7 @@ namespace DaveWilson\Concordance;
 /**
  * Class ServiceInterface
  *
- * The service takes reads input as a string, parses the concordance, and writes the results.
+ * Implement the service interface for an entry point into generating a concordance.
  */
 interface ServiceInterface
 {

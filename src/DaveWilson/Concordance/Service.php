@@ -5,7 +5,7 @@ namespace DaveWilson\Concordance;
 /**
  * Class Service
  *
- * The service takes reads input as a string, parses the concordance, and writes the results.
+ * Concrete concordance service that reads input, parses the concordance, and writes the results.
  */
 class Service implements ServiceInterface
 {
@@ -31,11 +31,8 @@ class Service implements ServiceInterface
      * @param ReaderInterface $reader
      * @param WriterInterface $writer
      */
-    public function __construct(
-        ParserInterface $parser,
-        ReaderInterface $reader,
-        WriterInterface $writer
-    ) {
+    public function __construct(ParserInterface $parser, ReaderInterface $reader, WriterInterface $writer)
+    {
         $this->parser = $parser;
         $this->reader = $reader;
         $this->writer = $writer;
@@ -62,7 +59,7 @@ class Service implements ServiceInterface
             // get the words in a sentence
             $words = $this->parser->getWords($sentence);
 
-            // loop through words
+            // loop through the words
             foreach ($words as $word) {
 
                 // if the word exists, add to the count and line number

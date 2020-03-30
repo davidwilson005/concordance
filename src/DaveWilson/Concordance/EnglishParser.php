@@ -9,12 +9,16 @@ namespace DaveWilson\Concordance;
  */
 class EnglishParser implements ParserInterface
 {
+    // hold the string literals of the regex patterns
+    const SPLIT_SENTENCE_REGEX = '/(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s/m';
+    const SPLIT_WORD_REGEX     = '/[^\w]*([\s]+[^\w]*|$)/';
+
     /**
      * @inheritDoc
      */
     public function splitSentences(string $sentences): array
     {
-        return preg_split('/(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s/m', $sentences);
+        return preg_split(static::SPLIT_SENTENCE_REGEX, $sentences);
     }
 
     /**
@@ -25,7 +29,7 @@ class EnglishParser implements ParserInterface
         // unique words are case insensitive in english
         $sentence = strtolower($sentence);
 
-        return preg_split('/[^\w]*([\s]+[^\w]*|$)/', $sentence, -1, PREG_SPLIT_NO_EMPTY);
+        return preg_split(static::SPLIT_WORD_REGEX, $sentence, -1, PREG_SPLIT_NO_EMPTY);
     }
 
     /**
