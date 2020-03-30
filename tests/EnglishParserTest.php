@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 class EnglishParserTest extends TestCase
 {
     /**
-     * Test the splitSentences() method will sentences that have different beginnings and endings.
+     * Test the splitSentences() method will split sentences that have different beginnings and endings.
      *
      * @return void
      */
@@ -39,6 +39,33 @@ class EnglishParserTest extends TestCase
         // test splitSentences()
         $englishParser = new EnglishParser();
         $this->assertEquals($expectedResults, $englishParser->splitSentences($sentences));
+    }
+
+    /**
+     * Test the removeSentenceEndings() will remove all different types of ending.
+     *
+     * @return void
+     */
+    public function testRemoveSentenceEndings(): void
+    {
+        // array of sentences to test, the expected will be the same
+        $sentences = [
+            'This is a test.',
+            'This is a test?',
+            'This is a test!',
+            'This is a test?!',
+            'This is a test?"',
+            'This is a test!"',
+            'This is a test."',
+            'This is a test!!!'
+        ];
+
+        $englishParser = new EnglishParser();
+
+        // loop through sentences, test removeSentenceEndings()
+        foreach ($sentences as $sentence) {
+            $this->assertEquals('This is a test', $englishParser->removeSentenceEndings($sentence));
+        }
     }
 
     /**
