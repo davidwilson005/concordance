@@ -10,7 +10,9 @@ namespace DaveWilson\Concordance;
 interface WriterInterface
 {
     /**
-     * Write the concordance output.
+     * Write the concordance output.  The input array is in the format:
+     *
+     * ['word'] => ['count' => 1, 'lines' => [1, 2]
      *
      * @param array $concordance
      */

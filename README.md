@@ -9,7 +9,7 @@ To run tests:
 ```
 composer install
 ```
-2. Run tests with the project autoloader:
+2. Run all tests:
 ```
-vendor/bin/phpunit --bootstrap autoload_ps4.php tests/
+vendor/bin/phpunit -c tests/phpunit.xml
 ```
