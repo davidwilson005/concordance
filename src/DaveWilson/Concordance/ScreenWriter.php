@@ -1,13 +1,13 @@
 <?php
 
-require_once('ConcordanceWriterInterface.php');
+namespace DaveWilson\Concordance;
 
 /**
- * Class ConcordanceScreenWriter
+ * Class ScreenWriter
  *
  * Concrete concordance writer to write output of the concordance to the screen.
  */
-class ConcordanceScreenWriter implements ConcordanceWriterInterface
+class ScreenWriter implements WriterInterface
 {
     /**
      * @inheritDoc

@@ -1,11 +1,13 @@
 <?php
 
+namespace DaveWilson\Concordance;
+
 /**
- * Class ConcordanceService
+ * Class ServiceInterface
  *
  * The service takes reads input as a string, parses the concordance, and writes the results.
  */
-interface ConcordanceServiceInterface
+interface ServiceInterface
 {
     /**
      * Generate concordance.

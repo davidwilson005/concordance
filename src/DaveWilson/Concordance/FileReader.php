@@ -1,13 +1,13 @@
 <?php
 
-require_once('ConcordanceReaderInterface.php');
+namespace DaveWilson\Concordance;
 
 /**
- * Class ConcordanceFileReader
+ * Class FileReader
  *
  * Concrete concordance reader to send text to the concordance service from a file.
  */
-class ConcordanceFileReader implements ConcordanceReaderInterface
+class FileReader implements ReaderInterface
 {
     /**
      * @var string
@@ -34,7 +34,5 @@ class ConcordanceFileReader implements ConcordanceReaderInterface
     public function getContents(): string
     {
         return file_get_contents($this->filepath);
-
-        //return "Given an arbitrary text document written in English, write a program that will generate a concordance, i.e. an alphabetical list of all word occurrences, labeled with word frequencies. Bonus: label each word with the sentence numbers in which each occurrence appeared.";
     }
 }

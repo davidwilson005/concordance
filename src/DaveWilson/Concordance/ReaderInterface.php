@@ -1,11 +1,13 @@
 <?php
 
+namespace DaveWilson\Concordance;
+
 /**
- * Interface ConcordanceReaderInterface
+ * Interface ReaderInterface
  *
  * Implement the reader interface to send text to the concordance service.
  */
-interface ConcordanceReaderInterface
+interface ReaderInterface
 {
     /**
      * Get string contents from a reader source.

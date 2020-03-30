@@ -1,11 +1,15 @@
 #!/usr/bin/env php
 <?php
 
-require_once('ConcordanceFactory.php');
-
+// make sure filepath argument was passed
 if ( ! isset($argv[1])) {
-    die('Usage: concordance /path/to/file');
+    die('Usage: concordance /path/to/file' . PHP_EOL);
 }
+
+// require the PS-4 autoloader
+require_once('./autoload_ps4.php');
+
+use DaveWilson\Concordance\Factory as ConcordanceFactory;
 
 // the second argument is the filepath argument
 $filepath = $argv[1];

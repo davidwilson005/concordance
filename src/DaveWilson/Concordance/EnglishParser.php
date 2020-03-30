@@ -1,11 +1,13 @@
 <?php
 
-require_once('ConcordanceParserInterface.php');
+namespace DaveWilson\Concordance;
 
 /**
- * Class ConcordanceEnglishParser
+ * Class EnglishParser
+ *
+ * Parse sentences and words from the english language.
  */
-class ConcordanceEnglishParser implements ConcordanceParserInterface
+class EnglishParser implements ParserInterface
 {
     /**
      * @inheritDoc

@@ -1,40 +1,40 @@
 <?php
 
-require_once('ConcordanceServiceInterface.php');
+namespace DaveWilson\Concordance;
 
 /**
- * Class ConcordanceService
+ * Class Service
  *
  * The service takes reads input as a string, parses the concordance, and writes the results.
  */
-class ConcordanceService implements ConcordanceServiceInterface
+class Service implements ServiceInterface
 {
     /**
-     * @var ConcordanceParserInterface
+     * @var ParserInterface
      */
     protected $parser;
 
     /**
-     * @var ConcordanceReaderInterface
+     * @var ReaderInterface
      */
     protected $reader;
 
     /**
-     * @var ConcordanceWriterInterface
+     * @var WriterInterface
      */
     protected $writer;
 
     /**
      * ConcordanceService constructor to inject dependencies.
      *
-     * @param ConcordanceParserInterface $parser
-     * @param ConcordanceReaderInterface $reader
-     * @param ConcordanceWriterInterface $writer
+     * @param ParserInterface $parser
+     * @param ReaderInterface $reader
+     * @param WriterInterface $writer
      */
     public function __construct(
-        ConcordanceParserInterface $parser,
-        ConcordanceReaderInterface $reader,
-        ConcordanceWriterInterface $writer
+        ParserInterface $parser,
+        ReaderInterface $reader,
+        WriterInterface $writer
     ) {
         $this->parser = $parser;
         $this->reader = $reader;

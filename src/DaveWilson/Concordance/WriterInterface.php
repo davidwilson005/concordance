@@ -1,11 +1,13 @@
 <?php
 
+namespace DaveWilson\Concordance;
+
 /**
- * Interface ConcordanceParserInterface
+ * Interface WriterInterface
  *
  * Implement the writer interface to write the output from the concordance service.
  */
-interface ConcordanceWriterInterface
+interface WriterInterface
 {
     /**
      * Write the concordance output.

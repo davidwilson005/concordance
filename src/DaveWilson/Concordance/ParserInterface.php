@@ -1,11 +1,13 @@
 <?php
 
+namespace DaveWilson\Concordance;
+
 /**
- * Interface ConcordanceParserInterface
+ * Interface ParserInterface
  *
  * Implement the parser interface to parse input from the concordance service.
  */
-interface ConcordanceParserInterface
+interface ParserInterface
 {
     /**
      * Split a string into sentences, return each sentence as as an array item.
