@@ -6,9 +6,10 @@ spl_autoload_register(function ($class) {
     // base directory for the namespace prefix
     $baseDir = __DIR__ . '/src/';
 
+    // get the filepath by replacing the namespace separators with directory separators
     $filepath = $baseDir . str_replace('\\', '/', $class) . '.php';
 
-    // check if the filepath exists
+    // make sure the filepath exists before trying to require it
     if (file_exists($filepath)) {
         require $filepath;
     }
