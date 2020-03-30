@@ -56,6 +56,10 @@ class Service implements ServiceInterface
         $concordance = [];
         foreach ($sentences as $sentence) {
 
+            // remove ending punctuation of sentences, this is needed to distinguish between words with periods
+            // at the end like i.e or just the end of a sentence
+            $sentence = $this->parser->removeSentenceEndings($sentence);
+
             // get the words in a sentence
             $words = $this->parser->getWords($sentence);
 

@@ -48,8 +48,8 @@ class EnglishParserTest extends TestCase
      */
     public function testSplitWords(): void
     {
-        $words = 'This is words, with punctuation i.e. Mr. Smith and high-tech, high-rise and life-size. Break words ' .
-            'with "quotes". Does this work?  No punctuation in a sentence ending!';
+        $words = 'This is words, with punctuation i.e. Mr. Smith and high-tech, high-rise and life-size Break words ' .
+            'with "quotes" Different Capitalization, commas, etc.';
 
         $expectedResults = [
             'this',
@@ -57,8 +57,8 @@ class EnglishParserTest extends TestCase
             'words',
             'with',
             'punctuation',
-            'i.e',
-            'mr',
+            'i.e.',
+            'mr.',
             'smith',
             'and',
             'high-tech',
@@ -69,15 +69,10 @@ class EnglishParserTest extends TestCase
             'words',
             'with',
             'quotes',
-            'does',
-            'this',
-            'work',
-            'no',
-            'punctuation',
-            'in',
-            'a',
-            'sentence',
-            'ending'
+            'different',
+            'capitalization',
+            'commas',
+            'etc.'
         ];
 
         // test getWords()

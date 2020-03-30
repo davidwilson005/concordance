@@ -11,7 +11,7 @@ class EnglishParser implements ParserInterface
 {
     // hold the string literals of the regex patterns
     const SPLIT_SENTENCE_REGEX = '/(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|\!|\")\s/m';
-    const SPLIT_WORD_REGEX     = '/[^\w]*([\s]+[^\w]*|$)/';
+    const SPLIT_WORD_REGEX     = '/[^\w\.]*([\s]+[^\w\.]*|$)/';
 
     /**
      * @inheritDoc
@@ -19,6 +19,16 @@ class EnglishParser implements ParserInterface
     public function splitSentences(string $sentences): array
     {
         return preg_split(static::SPLIT_SENTENCE_REGEX, $sentences);
+    }
+
+    /**
+     * @param string $sentence
+     *
+     * @return string
+     */
+    public function removeSentenceEndings(string $sentence): string
+    {
+        return rtrim($sentence, '.?!"');
     }
 
     /**

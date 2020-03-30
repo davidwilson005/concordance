@@ -19,7 +19,17 @@ interface ParserInterface
     public function splitSentences(string $sentences): array;
 
     /**
-     * Split a sentence into words, return each word as an array item.
+     * Remove the punctuation from sentence endings.
+     *
+     * @param string $sentence
+     *
+     * @return string
+     */
+    public function removeSentenceEndings(string $sentence): string;
+
+    /**
+     * Get individual words, return each word as an array item.  This method does break words with sentences, use
+     * splitSentences() first.
      *
      * @param string $sentence
      *
