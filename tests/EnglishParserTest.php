@@ -101,7 +101,7 @@ class EnglishParserTest extends TestCase
     public function testSplitWords(): void
     {
         $words = 'This is words, with punctuation i.e. Mr. Smith and high-tech, high-rise and life-size Break words ' .
-            'with "quotes" Different Capitalization, commas, etc.';
+            'with "quotes" Different Capitalization, commas, etc. 100% of .9 or 0.9 of things';
 
         $expectedResults = [
             'this',
@@ -124,7 +124,14 @@ class EnglishParserTest extends TestCase
             'different',
             'capitalization',
             'commas',
-            'etc.'
+            'etc.',
+            '100%',
+            'of',
+            '.9',
+            'or',
+            '0.9',
+            'of',
+            'things'
         ];
 
         // test getWords()

@@ -11,7 +11,7 @@ class EnglishParser implements ParserInterface
 {
     // hold the string literals of the regex patterns
     const SPLIT_SENTENCE_REGEX = '/(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<!(etc|alt)\.)(?<=\.|\?|\!|\")\s+/m';
-    const SPLIT_WORD_REGEX     = '/[^\w\.]*([\s]+[^\w\.]*|$)/';
+    const SPLIT_WORD_REGEX     = '/[^\w\.%]*([\s]+[^\w\.]*|$)/';
 
     /**
      * @inheritDoc
