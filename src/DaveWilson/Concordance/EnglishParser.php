@@ -22,9 +22,7 @@ class EnglishParser implements ParserInterface
     }
 
     /**
-     * @param string $sentence
-     *
-     * @return string
+     * @inheritDoc
      */
     public function removeSentenceEndings(string $sentence): string
     {
