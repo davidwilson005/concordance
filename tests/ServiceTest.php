@@ -1,7 +1,7 @@
 <?php
 
 use DaveWilson\Concordance\EnglishParser;
-use DaveWilson\Concordance\ReaderInterface;
+use DaveWilson\Concordance\FileReader;
 use DaveWilson\Concordance\Service;
 use DaveWilson\Concordance\WriterInterface;
 use PHPUnit\Framework\TestCase;
@@ -10,12 +10,13 @@ class ServiceTest extends TestCase
 {
     /**
      * Test generate() with sample text.
+     *
+     * @return void
      */
-    public function testGenerate()
+    public function testGenerate(): void
     {
-        // create a mock reader with example.txt
-        $reader = $this->createMock(ReaderInterface::class);
-        $reader->method('getContents')->willReturn(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'example.txt'));
+        // create a reader with example.txt
+        $reader = new FileReader(__DIR__ . DIRECTORY_SEPARATOR . 'example.txt');
 
         // expected results of concordance
         $expectedResults = [
