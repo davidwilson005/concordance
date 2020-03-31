@@ -10,14 +10,13 @@ class EnglishParserTest extends TestCase
      *
      * @return void
      */
-    public function testSplitSentences(): void
+    public function testSplitSentenceAtEndings(): void
     {
         // try every combination of ways to start and end a sentence
         $sentences = 'This is a test. This is a test? This is a test! This is a test?! He said, "this is a test?" ' .
-            'He said, "yes, this is a test." I said, "wow, this is a test!" This i.e. is a test. This is-a test. ' .
-            'This is, a test. "Great Scott!", I said. "Testing multiple types of quotes", he said. "I see", I said. ' .
-            'Finally!!! Did this all work? Test quotes, "in the middle", she said. Checking for Mr., Mr., Dr. and ' .
-            'that it does not split. That is all';
+            'She said, "yes, this is a test." I said, "wow, this is a test!" "Great Scott!", I said. "Testing ' .
+            'multiple types of quotes", he said. "I see", I said. Finally!!! Did this all work? Test quotes, "in the ' .
+            'middle", she said.';
 
         $expectedResults = [
             'This is a test.',
@@ -25,19 +24,41 @@ class EnglishParserTest extends TestCase
             'This is a test!',
             'This is a test?!',
             'He said, "this is a test?"',
-            'He said, "yes, this is a test."',
+            'She said, "yes, this is a test."',
             'I said, "wow, this is a test!"',
-            'This i.e. is a test.',
-            'This is-a test.',
-            'This is, a test.',
             '"Great Scott!", I said.',
             '"Testing multiple types of quotes", he said.',
             '"I see", I said.',
             'Finally!!!',
             'Did this all work?',
-            'Test quotes, "in the middle", she said.',
-            'Checking for Mr., Mr., Dr. and that it does not split.',
-            'That is all'
+            'Test quotes, "in the middle", she said.'
+        ];
+
+        // test splitSentences()
+        $englishParser = new EnglishParser();
+        $this->assertEquals($expectedResults, $englishParser->splitSentences($sentences));
+    }
+
+    /**
+     * Test splitSentences() with special characters in the middle of a sentence like '.' or quotes.
+     *
+     * @return void
+     */
+    public function testSplitSentenceMiddleSpecial(): void
+    {
+        $sentences = 'Mr. Smith bought cheapsite.com for "1.5 million dollars", i.e. he paid a lot for it. Adam ' .
+            'Jones Jr. thinks he didn\'t. In any case, this isn\'t true... Well, with a probability of .9 ' .
+            'it isn\'t.  There can also be abbreviations like etc. and alt. in a sentence.  People used to double ' .
+            'space sentences. Checking for Mr., Mr., Dr. and that it does not split.';
+
+        $expectedResults = [
+            'Mr. Smith bought cheapsite.com for "1.5 million dollars", i.e. he paid a lot for it.',
+            'Adam Jones Jr. thinks he didn\'t.',
+            'In any case, this isn\'t true...',
+            'Well, with a probability of .9 it isn\'t.',
+            'There can also be abbreviations like etc. and alt. in a sentence.',
+            'People used to double space sentences.',
+            'Checking for Mr., Mr., Dr. and that it does not split.'
         ];
 
         // test splitSentences()
